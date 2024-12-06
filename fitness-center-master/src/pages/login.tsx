@@ -75,8 +75,9 @@ export default function Login() {
         const errorData = await response.json();
         setError(errorData.message || "Failed to login. Please try again.");
       }
-    } catch (err: any) {
-      setError(err.message || "Login request failed. Please try again.");
+    } catch (err) {
+      const error = err as Error;
+      setError(error.message || "Login request failed. Please try again.");
     }
   };
 
